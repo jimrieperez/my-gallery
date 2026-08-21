@@ -31,26 +31,16 @@ Here are some screenshots of Gallery in action:
 
 ## Installation
 
-1. Clone the repository:
-
-```bash
-git clone https://github.com/lazyjinchuriki/gallery.git
-```
-
-2. Install dependencies:
-
-```bash
-cd gallery
 npm install
 ```
 
-3. Set up Supabase:
+1. Set up Supabase:
 
    - Create a Supabase project on the [Supabase Dashboard](https://app.supabase.io/).
    - Configure authentication and storage in your Supabase project settings.
    - Copy your Supabase API URL and public API key.
 
-4. Create a `.env.local` file in the project root and add your Supabase configuration:
+2. Create a `.env.local` file in the project root and add your Supabase configuration:
 
 ```env
 VITE_Project_URL=your-supabase-api-url
@@ -83,18 +73,3 @@ This project uses Supabase services for:
 - Storage: For storing user-uploaded images securely.
 
 ## Contributions
-
-Contributions to the project are welcome. Please create an issue or submit a pull request if you would like to contribute.
-
-## Contact
-
-If you have any questions or concerns, you can contact the author of this project at [rahulkhushalani@proton.me](mailto:rahulkhushalani@proton.me).
-
-### Donations
-
-If you found Gallery useful, consider buying me a coffee!
-
-<a href="https://www.buymeacoffee.com/lazyjinchuriki">
-  <img src="https://www.buymeacoffee.com/assets/img/guidelines/download-assets-sm-1.svg" width="150" height="50">
-</a>
-# my-gallery

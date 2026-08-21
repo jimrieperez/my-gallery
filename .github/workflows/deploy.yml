@@ -1,0 +1,57 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16
+
+      - name: Install dependencies
+        uses: bahmutov/npm-install@v1
+
+      - name: Build project
+        run: npm run build
+
+      - name: Upload production-ready build files
+        uses: actions/upload-artifact@v2
+        with:
+          name: production-files
+          path: ./dist
+
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: production-files
+          path: ./dist
+
+      - name: Set up environment variables
+        run: |
+          echo "VITE_Project_URL=https://chjdddjpezbmgdjbfigk.supabase.co" >> $GITHUB_ENV
+          echo "VITE_Public_Key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNoamRkZGpwZXpibWdkamJmaWdrIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTI2MjYxNTIsImV4cCI6MjAwODIwMjE1Mn0.lEgRcaaJ5a9EkFZpaSNzrelXt3A4odgV3-SXxFC-ZrE" >> $GITHUB_ENV
+          echo "VITE_CDN_URL=https://chjdddjpezbmgdjbfigk.supabase.co/storage/v1/object/public/images/" >> $GITHUB_ENV
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
