@@ -17,17 +17,6 @@ This is a web-based gallery project built using React.js and Supabase as Backend
 - User-friendly interface for managing images.
 - Supabase integration for backend services.
 
-## Screenshots
-Here are some screenshots of Gallery in action:
-
-| Gallery                        |
-|---------------------------------|
-| ![Gallery screenshot](/screenshots/gallery.png) |
-
-| Login Page               | Signup Page                |
-|--------------------------------|--------------------------------|
-| ![Login Page screenshot](/screenshots/login.png) | ![Signup screenshot](/screenshots/signup.png) |
-
 
 ## Installation
 
